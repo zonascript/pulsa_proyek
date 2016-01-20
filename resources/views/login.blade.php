@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Apalikasi Arsip Proyek Indarung VI | Log in</title>
+    <title>Rekapitulasi Pulsa Proyek Indarung VI</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <link rel="stylesheet" href="{{url('asset/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('asset/dist/css/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{url('asset/dist/css/ionicons.min.css')}}">
-    <link rel="stylesheet" href="{{url('asset/dist/css/AdminLTE.min.css')}}">
+    <link rel="stylesheet" href="{{url('asset/dist/css/AdminLTE.css')}}">
     <link rel="stylesheet" href="{{url('asset/plugins/iCheck/square/blue.css')}}">
 
     <!--[if lt IE 9]>
@@ -20,11 +20,11 @@
     <div class="login-box">
 
       <div class="login-logo">
-        <a href="{{url('asset/index2.html')}}"><b>ARSIP INDARUNG-VI</b></a>
+        <a href="{{url('asset/index2.html')}}"><b>Rekap Pulsa Proyek</b></a>
       </div><!-- /.login-logo -->
       <div class="login-box-body">
       @if (count($errors) > 0)
-          <div class="alert alert-dismissible alert-warning">
+          <div class="alert alert-dismissible alert-error">
               <button type="button" class="close" data-dismiss="alert">×</button>
             <b>LOGIN GAGAL! </b><br>
             Mohon Periksa Kembali Username dan Password.
@@ -37,7 +37,7 @@
           </div>
       @endif
         <p class="login-box-msg">Sign in to start your session</p>
-        <form role="form" method="POST" action="{{ url('login') }}">
+        <form role="form" method="POST" action="{{ url('auth/login') }}">
           {!! csrf_field() !!}
           <div class="form-group">
             <input type="text" class="form-control" name="username" placeholder="Username">

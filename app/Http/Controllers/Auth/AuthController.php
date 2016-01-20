@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Pulsa\Http\Controllers\Auth;
 
-use App\User;
+use Pulsa\User;
 use Validator;
-use App\Http\Controllers\Controller;
+use Pulsa\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 

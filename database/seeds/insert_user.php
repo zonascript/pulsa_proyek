@@ -12,28 +12,22 @@ class insert_user extends Seeder
     public function run()
     {
         //
-        DB::table('user')->delete();
+         DB::table('user')->delete();
 
-    	$user = [
-    		array(
-    			'id' => 1,
-    			'username' => 'root',
-    			'password' => bcrypt('root'),
-    			'status' => 'A',
-                'role_user_id' => '1',
-                'personil_id' => '1'
-    			// 'created_by' => 'null',
-    		),
-    		array(
-    			'id' => 2,
-    			'username' => 'admin',
-    			'password' => bcrypt('admin'),
-    			'status' => 'N',
-                'role_user_id' => '1',
-                'personil_id' => '1'
-    			// 'created_by' => '1',
-    		)];
+        $user = [
+            array(
+                'id' => 1,
+                'username' => 'root',
+                'password' => bcrypt('root'),
+                'status' => 'A',
+            ),
+            array(
+                'id' => 2,
+                'username' => 'admin',
+                'password' => bcrypt('admin'),
+                'status' => 'N',
+            )];
 
-     	DB::table('user')->insert($user);
+        DB::table('user')->insert($user);
     }
 }

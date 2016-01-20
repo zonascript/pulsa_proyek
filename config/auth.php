@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => App\model\user::class,
+    'model' => Pulsa\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------

@@ -12,9 +12,11 @@
 */
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::controller('/sap', 'sapController');
-	Route::controller('/home', 'arsipController');
+	Route::get('/dashboard', ['uses'=> 'pulsaController@index', 'as'=>'home']);
+	Route::controller('/personil', 'personilController');
+	Route::get('/pulsa/{bulan}/{tahun}', 'pulsaController@pemakaian');
 });
 
-Route::controller('/', 'userController');
+Route::controller('/auth', 'authController');
+Route::get('/', 'authController@index');
 

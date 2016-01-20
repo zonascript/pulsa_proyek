@@ -17,32 +17,20 @@ class insert_role extends Seeder
     	$role = [
     		array(
     			'id' => 1,
-    			'nama' => 'Administrator',
+    			'nama_role' => 'Administrator',
     		),
     		array(
     			'id' => 2,
-    			'nama' => 'Uploader Unit',
+    			'nama_role' => 'Admin AFIS',
     		),
-    		array(
+			array(
     			'id' => 3,
-    			'nama' => 'Audit',
+    			'nama_role' => 'Manager AFIS',
     		),
     		array(
     			'id' => 4,
-    			'nama' => 'Manager',
-    		),
-    		array(
-    			'id' => 5,
-    			'nama' => 'Senior Manager',
-    		),
-    		array(
-    			'id' => 6,
-    			'nama' => 'General Manager',
-    		),
-    		array(
-    			'id' => 7,
-    			'nama' => 'Uploader HRGA',
-    		),
+    			'nama_role' => 'SM AFIS',
+    		)
     	];
 
 

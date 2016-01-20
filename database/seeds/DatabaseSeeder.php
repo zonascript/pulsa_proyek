@@ -13,14 +13,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         Model::unguard();
-
         $this->call('insert_role');
-        $this->call('insert_unit');
-        $this->call('insert_posisi');
-        $this->call('insert_personil');
-        $this->call('insert_user');
-        
-        
+        $this->call('insert_jenis_kartu');
+        $this->call('insert_jabatan');
+        $this->call('insert_user');       
         Model::reguard();
     }
 }

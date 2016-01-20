@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Events;
+namespace Pulsa\Events;
 
 abstract class Event
 {
