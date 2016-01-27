@@ -33,11 +33,11 @@ class ForeinKeyTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->foreign('jenis_kartu_id')
-                ->references('id')
-                ->on('jenis_kartu')
-                ->onDelete('cascade')
-                ->onUpdate('cascade');
+            // $table->foreign('jenis_kartu_id')
+            //     ->references('id')
+            //     ->on('jenis_kartu')
+            //     ->onDelete('cascade')
+            //     ->onUpdate('cascade');
         });
 
         Schema::table('transaksi_pulsa', function (Blueprint $table) {

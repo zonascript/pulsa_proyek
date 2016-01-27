@@ -16,8 +16,9 @@ class CreatePersonilsTable extends Migration
             $table->increments('id');
             $table->string('nama_personil',100);
             $table->integer('jabatan_id')->unsigned()->nullable();
-            $table->string('no_hp',15);
-            $table->integer('jenis_kartu_id')->unsigned()->nullable();
+            $table->string('no_hp_telkomsel',15)->nullable();
+            $table->string('no_hp_indosat',15)->nullable();
+            // $table->integer('jenis_kartu_id')->unsigned()->nullable();
             $table->date('jatuh_tempo')->nullable();
             $table->timestamps();
         });

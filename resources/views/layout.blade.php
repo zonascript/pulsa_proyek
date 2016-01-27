@@ -37,10 +37,13 @@
             <div class="navbar-custom-menu">
               <ul class="nav navbar-nav">
                 <li>
+                  <a href="{{url('pulsa/')}}">Tampil Pemakaian</a>
+                </li>
+                <li>
                   <a href="{{url('personil/tambah-personil')}}">Tambah Personil</a>
                 </li>
                 <li>
-                  <a href="{{url('auth/tambah-user')}}">Tambah Pengguna</a>
+                  <a href="{{url('auth/register')}}">Tambah Pengguna</a>
                 </li>
                 <li>
                   <a href="{{url('auth/logout')}}">Logout</a>

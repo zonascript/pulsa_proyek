@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
         $this->call('insert_role');
-        $this->call('insert_jenis_kartu');
+        // $this->call('insert_jenis_kartu');
         $this->call('insert_jabatan');
         $this->call('insert_user');       
         Model::reguard();

@@ -12,11 +12,11 @@ class JenisKartu extends Migration
      */
     public function up()
     {
-        Schema::create('jenis_kartu', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nama_kartu',100);
-            $table->timestamps();
-        });
+        // Schema::create('jenis_kartu', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('nama_kartu',100);
+        //     $table->timestamps();
+        // });
     }
 
     /**
@@ -26,6 +26,6 @@ class JenisKartu extends Migration
      */
     public function down()
     {
-        Schema::drop('jenis_kartu');
+        // Schema::drop('jenis_kartu');
     }
 }

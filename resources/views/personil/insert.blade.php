@@ -38,28 +38,31 @@
 								</select>
 							</div>
 						</div>
-						<div class="form-group">
+						<!-- <div class="form-group">
 							<label class="col-sm-2 control-label">Jenis</label>
 							<div class="col-sm-6">
 								<select class="form-control select2" name="jenis_kartu_id" style="width: 100%;">
-									@foreach($jenisKartu as $jenis)
-										<option value="{{$jenis['id']}}">{{$jenis['nama_kartu']}}</option>
-									@endforeach
 								</select>
 							</div>
-						</div>						
+						</div> -->						
 						<div class="form-group">
-							<label class="col-sm-2 control-label">No Handphone</label>
+							<label class="col-sm-2 control-label">No Telkomsel</label>
 							<div class="col-sm-6">
-								<input type="text" class="form-control" name="no_hp" placeholder="No Handphone">
+								<input type="text" class="form-control" name="no_hp_telkomsel" placeholder="No Handphone">
 							</div>
 						</div>
 						<div class="form-group">
+							<label class="col-sm-2 control-label">No Indosat</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="no_hp_indosat" placeholder="No Handphone">
+							</div>
+						</div>
+						<!-- <div class="form-group">
 							<label class="col-sm-2 control-label">Jatuh Tempo Pembayaran</label>
 							<div class="col-sm-6">
 								<input type="text" class="form-control" name="jatuh_tempo" placeholder="Jatuh Tempo Pembayaran">
 							</div>
-						</div>
+						</div> -->
 						<div class="box-footer">
 							<div class="">
 								<button type="reset" class="btn btn-default col-md-2">Reset</button>

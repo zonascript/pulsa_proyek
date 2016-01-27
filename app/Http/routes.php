@@ -15,6 +15,9 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/dashboard', ['uses'=> 'pulsaController@index', 'as'=>'home']);
 	Route::controller('/personil', 'personilController');
 	Route::get('/pulsa/{bulan}/{tahun}', 'pulsaController@pemakaian');
+	Route::get('/pulsa', 'pulsaController@viewHome');
+	Route::get('/pulsa/insert', 'pulsaController@getInsertPulsa');
+	Route::get('/ajax-nohp/{nohp}', 'pulsaController@getAjaxNohp');
 });
 
 Route::controller('/auth', 'authController');

@@ -8,20 +8,21 @@ use Pulsa\Http\Requests;
 use Pulsa\Http\Controllers\Controller;
 
 use Pulsa\Models\Personil;
-use Pulsa\Models\JenisKartu;
+// use Pulsa\Models\JenisKartu;
 use Pulsa\Models\Jabatan;
 
 use Validator;
 use Redirect;
+use Datatables;
 
 class personilController extends Controller
 {
    
    public function getTambahPersonil()
    {
-        $jenisKartu = JenisKartu::all();
+        // $jenisKartu = JenisKartu::all();
         $jabatan = Jabatan::all();
-        return view('personil.insert', compact('jenisKartu', 'jabatan'));
+        return view('personil.insert', compact('jabatan'));
    }
 
    public function postTambahPersonil(Request $request)
@@ -29,8 +30,6 @@ class personilController extends Controller
       $validator = Validator::make($request->all(), [
             'nama_personil' => 'required',
             'jabatan_id' => 'required',
-            'no_hp' => 'required',
-            'jenis_kartu_id' => 'required',
         ]);
 
         if ($validator->fails()) {
@@ -38,15 +37,24 @@ class personilController extends Controller
                       ->withErrors($validator)
                       ->withInput();
         }
-        $input = $request->only(['nama_personil', 'jabatan_id', 'no_hp', 'jenis_kartu_id', 'jatuh_tempo']);
+        $input = $request->only(['nama_personil', 'jabatan_id', 'no_hp_telkomsel', 'no_hp_indosat']);
         Personil::create($input);
-        return redirect()->route('home');
+        return redirect('personil/personil');
    }
 
    public function getPersonil($value='')
    {
+      
+      return view('personil.tampil');
+   }
+
+   public function getAnyData()
+   {
       $personil = Personil::all();
-      // dd($personil);
-      return view('personil.tampil', compact('personil'));
+      return Datatables::of($personil)
+        ->add_column('jabatan', function($personil){
+          return $personil->jabatan->nama_jabatan;
+        })
+        ->make(true);
    }
 }

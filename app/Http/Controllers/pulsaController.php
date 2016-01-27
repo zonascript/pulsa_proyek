@@ -27,6 +27,28 @@ class pulsaController extends Controller
     	return view('transaksi.bulan');
     }
 
+    public function viewHome($value='')
+    {
+        return view('pulsa.home');
+    }
+
+    public function getInsertPulsa($value='')
+    {
+        $personil = Personil::groupBy('nama_personil')->get();
+        return view('pulsa.insert', compact('personil'));
+    }
+
+    public function getAjaxNohp($nohp='')
+    {
+        $personil = Personil::select('no_hp_telkomsel', 'no_hp_indosat')->where('id', $nohp)->get();
+        return $personil->toArray();
+    }
+
+    public function postInsertPulsa($value='')
+    {
+
+    }
+
    
     
 }
