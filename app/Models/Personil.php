@@ -12,7 +12,7 @@ class Personil extends Model
 
     public function jabatan()
     {
-        return $this->belongsTo('Pulsa\Models\Jabatan');
+        return $this->hasOne('Pulsa\Models\Jabatan', 'jabatan_id');
     }
 
     // public function jenis_kartu()

@@ -12,14 +12,15 @@
 */
 
 Route::group(['middleware' => 'auth'], function () {
-	Route::get('/dashboard', ['uses'=> 'pulsaController@index', 'as'=>'home']);
 	Route::controller('/personil', 'personilController');
-	Route::get('/pulsa/{bulan}/{tahun}', 'pulsaController@pemakaian');
-	Route::get('/pulsa', 'pulsaController@viewHome');
-	Route::get('/pulsa/insert', 'pulsaController@getInsertPulsa');
-	Route::get('/ajax-nohp/{nohp}', 'pulsaController@getAjaxNohp');
+	// Route::get('/pulsa/{bulan}/{tahun}', 'pulsaController@pemakaian');
+	// Route::get('/pulsa', 'pulsaController@viewHome');
+	// Route::get('/pulsa/insert', 'pulsaController@getInsertPulsa');
+	// Route::get('/ajax-nohp/{nohp}', 'pulsaController@getAjaxNohp');
 });
 
+Route::get('/', ['uses'=> 'pulsaController@getIndex', 'as'=>'home']);
+Route::controller('/pulsa', 'pulsaController');
+
 Route::controller('/auth', 'authController');
-Route::get('/', 'authController@index');
 

@@ -11,7 +11,6 @@ class JenisKartu extends Model
 
     public function Personil($value='')
     {
-    	# code...
     	return $this->hasMany('App/Models/Personil');
     }
 }

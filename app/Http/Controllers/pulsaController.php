@@ -15,28 +15,58 @@ use DB;
 class pulsaController extends Controller
 {
 
-    public function index()
+    public function getIndex(Request $request)
     {
-    	$personil = Personil::all();
-        return view('home', compact('personil'));
+        $bulan = $request->get('bulan');
+        $tahun = $request->get('tahun');
+        $trans = Transaksi::listBulan($bulan, $tahun)->get();
+        return view('pulsa.home', compact('trans'));
     }
 
-    public function pemakaian($bulan='', $tahun='')
+    public function getPemakaian($value='')
     {
-    	$transaksi = Transaksi::where(DB::raw('MONTH(tanggal_bayar)'), '=', $bulan)->where(DB::raw('YEAR(tanggal_bayar)'), '=', $tahun)->get();
-    	return view('transaksi.bulan');
-    }
-
-    public function viewHome($value='')
-    {
-        return view('pulsa.home');
-    }
-
-    public function getInsertPulsa($value='')
-    {
-        $personil = Personil::groupBy('nama_personil')->get();
+        $personil = Personil::get();
         return view('pulsa.insert', compact('personil'));
     }
+
+    public function postPemakaian(Request $request)
+    {
+        $req = $request->all();
+        // $req['pemakaian'] = 
+        $trans = Transaksi::where('no_hp', $req['no_hp'])->where('pemakaian_bulan', $req['pemakaian_bulan'])->get();
+        if (count($trans)==0) {
+            # code...
+            Transaksi::create($req);
+            \Session::flash('alert-success', 'Berhasil Menambahkan Pemakaian');
+        }else{
+            \Session::flash('alert-warning', 'Pemakaian Sudah ada Sebelumnya');
+        }
+        return redirect()->back();
+        # code...
+    }
+
+    // public function index()
+    // {
+    // 	$personil = Personil::all();
+    //     return view('home', compact('personil'));
+    // }
+
+    // public function pemakaian($bulan='', $tahun='')
+    // {
+    // 	$transaksi = Transaksi::where(DB::raw('MONTH(tanggal_bayar)'), '=', $bulan)->where(DB::raw('YEAR(tanggal_bayar)'), '=', $tahun)->get();
+    // 	return view('transaksi.bulan');
+    // }
+
+    // public function viewHome($value='')
+    // {
+    //     return view('pulsa.home');
+    // }
+
+    // public function getInsertPulsa($value='')
+    // {
+    //     $personil = Personil::groupBy('nama_personil')->get();
+    //     return view('pulsa.insert', compact('personil'));
+    // }
 
     public function getAjaxNohp($nohp='')
     {
@@ -44,10 +74,15 @@ class pulsaController extends Controller
         return $personil->toArray();
     }
 
-    public function postInsertPulsa($value='')
-    {
+    // public function postInsertPulsa($value='')
+    // {
 
-    }
+    // }
+
+    // public function getHome($value='')
+    // {
+    //     return
+    // }
 
    
     

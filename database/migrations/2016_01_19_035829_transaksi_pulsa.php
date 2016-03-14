@@ -15,8 +15,9 @@ class TransaksiPulsa extends Migration
         Schema::create('transaksi_pulsa', function (Blueprint $table) {
             $table->increments('id');
             $table->double('pemakaian');
-            $table->date('pemakaian_bulan');
+            $table->string('pemakaian_bulan');
             $table->date('tanggal_bayar');
+            $table->string('no_hp', 15);
             $table->integer('id_personil')->unsigned()->nullable();
             $table->integer('created_by')->unsigned()->nullable();
             $table->timestamps();

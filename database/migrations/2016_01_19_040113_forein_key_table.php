@@ -16,13 +16,11 @@ class ForeinKeyTable extends Migration
             $table->foreign('role_user_id')
                 ->references('id')
                 ->on('role_user')
-                ->onDelete('cascade')
                 ->onUpdate('cascade');
 
             $table->foreign('created_by')
                 ->references('id')
                 ->on('user')
-                ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
 
@@ -30,7 +28,6 @@ class ForeinKeyTable extends Migration
             $table->foreign('jabatan_id')
                 ->references('id')
                 ->on('jabatan')
-                ->onDelete('cascade')
                 ->onUpdate('cascade');
 
             // $table->foreign('jenis_kartu_id')
@@ -44,13 +41,11 @@ class ForeinKeyTable extends Migration
             $table->foreign('id_personil')
                 ->references('id')
                 ->on('personil')
-                ->onDelete('cascade')
                 ->onUpdate('cascade');
 
               $table->foreign('created_by')
                 ->references('id')
                 ->on('user')
-                ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
 

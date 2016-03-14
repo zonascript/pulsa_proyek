@@ -3,49 +3,32 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>@section('title_pages') Aplikasi Pulsa Proyek Indarung VI @show</title>
+    <title>@section('judul_halamam') Aplikasi Pulsa Proyek Indarung VI @show</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{url('asset/bootstrap/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{url('asset/dist/css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{url('asset/dist/css/ionicons.min.css')}}">
-    @yield('costom_style_pages')
-    <link rel="stylesheet" href="{{url('asset/dist/css/AdminLTE.css')}}">
-    <link rel="stylesheet" href="{{url('asset/dist/css/skins/skin-blue.css')}}">
+       @yield('custom_style')
+        <link rel="stylesheet" href="{{url('asset/dist/css/AdminLTE.css')}}">
+    <link rel="stylesheet" href="{{url('asset/dist/css/skins/skin-red.css')}}">
     <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
   </head>
-  <body class="hold-transition skin-blue layout-top-nav">
+  <body class="hold-transition skin-red layout-top-nav">
     <div class="wrapper">
       
       <header class="main-header">
         <nav class="navbar navbar-static-top">
           <div class="container">
             <div class="navbar-header">
-              <a href="{{url('/')}}" class="navbar-brand"><b>Report Pemakaian Pulsa Proyek</b></a>
-              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-                <i class="fa fa-bars"></i>
-              </button>
+              <a href="{{url('/')}}" class="navbar-brand"><b>Report Pulsa Proyek</b></a>
             </div>
 
-            <div class="navbar-custom-menu">
-              <ul class="nav navbar-nav">
-                <li>
-                  <a href="{{url('pulsa/')}}">Tampil Pemakaian</a>
-                </li>
-                <li>
-                  <a href="{{url('personil/tambah-personil')}}">Tambah Personil</a>
-                </li>
-                <li>
-                  <a href="{{url('auth/register')}}">Tambah Pengguna</a>
-                </li>
-                <li>
-                  <a href="{{url('auth/logout')}}">Logout</a>
-                </li>
-              </ul>
-            </div>
+          @include('_include.menu')
           </div>
         </nav>
       </header>
@@ -54,7 +37,7 @@
         <div class="container">
           <section class="content">
             <div class="row">
-              @section('content_main_pages')
+              @section('content')
 
               @show
             </div>
