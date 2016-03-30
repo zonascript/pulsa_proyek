@@ -9,6 +9,7 @@ use Pulsa\Http\Controllers\Controller;
 
 use Pulsa\Models\Personil;
 use Pulsa\Models\Transaksi;
+use Pulsa\Models\rekap_pulsa as Rekap;
 
 use DB;
 
@@ -17,10 +18,16 @@ class pulsaController extends Controller
 
     public function getIndex(Request $request)
     {
-        $bulan = $request->get('bulan');
-        $tahun = $request->get('tahun');
-        $trans = Transaksi::listBulan($bulan, $tahun)->get();
-        return view('pulsa.home', compact('trans'));
+        $rekap = Rekap::get();
+        $i = 0;
+        $waktu[$i] = '';
+        foreach ($rekap as $key => $value) {
+            if($waktu[$i]  != $value['bulan'].'-'.$value['tahun']){
+                $i++;
+                $waktu[$i] = $value['bulan'].'-'.$value['tahun'];
+            }
+        }
+        return view('pulsa.index', compact('waktu', 'rekap'));
     }
 
     public function getPemakaian($value='')
@@ -73,6 +80,22 @@ class pulsaController extends Controller
         $personil = Personil::select('no_hp_telkomsel', 'no_hp_indosat')->where('id', $nohp)->get();
         return $personil->toArray();
     }
+
+    public function getUploadPemakaian($value='')
+    {
+        return view('pulsa.uploadExcel');
+    }
+
+    public function postUploadPemakaian(Request $request)
+    {
+        $file1 = $request->file('excel');
+        
+        $data = \Excel::load($file1)->get()->toArray();
+        Rekap::insert($data);
+
+        return redirect('pulsa');
+    }
+
 
     // public function postInsertPulsa($value='')
     // {
