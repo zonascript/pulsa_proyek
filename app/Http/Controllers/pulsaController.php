@@ -10,6 +10,7 @@ use Pulsa\Http\Controllers\Controller;
 use Pulsa\Models\Personil;
 use Pulsa\Models\Transaksi;
 use Pulsa\Models\rekap_pulsa as Rekap;
+use Pulsa\Models\loadUpload as LogUpload;
 
 use DB;
 
@@ -18,7 +19,12 @@ class pulsaController extends Controller
 
     public function getIndex(Request $request)
     {
-        $rekap = Rekap::get();
+        $tahun = $request->input('tahun');
+        if($tahun!=''){
+            $rekap = Rekap::where('tahun', $tahun)->get();
+        }else{
+            $rekap = Rekap::select('*')->get();
+        }            
         $i = 0;
         $waktu[$i] = '';
         foreach ($rekap as $key => $value) {
@@ -26,9 +32,12 @@ class pulsaController extends Controller
                 $i++;
                 $waktu[$i] = $value['bulan'].'-'.$value['tahun'];
             }
+            $tahun = $value['tahun'];
+            $bulan[$i] = $value['bulan'];
         }
-        return view('pulsa.index', compact('waktu', 'rekap'));
+        return view('pulsa.index', compact('waktu', 'rekap', 'tahun', 'bulan'));
     }
+    //TODO; tamabh fitur
 
     public function getPemakaian($value='')
     {
@@ -92,6 +101,7 @@ class pulsaController extends Controller
         
         $data = \Excel::load($file1)->get()->toArray();
         Rekap::insert($data);
+        $put_file = Storage::disk('local')->put('file/excel',  File::get($file1));
 
         return redirect('pulsa');
     }

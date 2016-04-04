@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - pulsa_proyek@localhost" uuid="7b5857d6-950d-4fb6-99f8-24c38016004f">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>pulsa_proyek.*</schema-pattern>
+      <default-schemas>pulsa_proyek.*</default-schemas>
+    </data-source>
+  </component>
+</project>

@@ -2,7 +2,7 @@
             <div class="navbar-custom-menu">
               <ul class="nav navbar-nav">
                 <li>
-                  <a href="{{url('pulsa/')}}">Tampil Pemakaian</a>
+                  <a href="{{url('pulsa/upload-pemakaian')}}">Tampil Pemakaian</a>
                 </li>
                 <li>
                   <a href="{{url('pulsa/pemakaian')}}">Tambah Pemakaian</a>
